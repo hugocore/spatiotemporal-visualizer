@@ -1,4 +1,4 @@
 spatiotemporal-visualizer
 =========================
 
-An online spatiotemporal data visualizer using D3.js, Leaflet.js and Crossfilter
+An online spatio-temporal utility to visualize trajectory data using D3.js, Leaflet.js and Crossfilter.
