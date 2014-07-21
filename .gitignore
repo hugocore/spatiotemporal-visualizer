@@ -1,0 +1,52 @@
+*.ipr
+*.iws
+*.iml
+var/*
+target/*
+build/*
+*/target/*
+.gradle/*
+out/*
+dependency.txt
+.tablesawcache
+.idea
+log/*
+/bin
+/kairosdb.jar
+
+# Sublime Files
+*.sublime-project
+*.sublime-workspace
+ 
+# Eclipse
+.classpath
+.project
+.settings/
+ 
+# Intellij
+.idea/
+*.iml
+*.iws
+ 
+# Maven
+log/
+target/
+ 
+# OSX
+.DS_Store
+ 
+# Linux
+.*
+!.gitignore
+*~
+ 
+# KDE
+.directory
+ 
+# Windows
+.Spotlight-V100
+.Trashes
+Thumbs.db 
+._*
+Desktop.ini
+$RECYCLE.BIN/

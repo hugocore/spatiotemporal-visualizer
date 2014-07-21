@@ -1,0 +1,199 @@
+<style>
+
+.g-graphic {
+  position: relative;
+}
+
+#g-play-button {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background: #004276;
+  padding-right: 26px;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 0;
+  padding: 0 12px;
+  width: 68px;
+  cursor: pointer;
+  height: 30px;
+  font: 13px sans-serif;
+}
+
+#g-play-button:hover {
+  background-color: #064d84;
+}
+
+#g-play-button:active {
+  background-color: #002657;
+}
+
+.g-graphic svg {
+  border-top: solid 1px #ccc;
+  font-family: Arial;
+}
+
+.g-background {
+  fill: #e0e9ef;
+}
+
+.g-land {
+  fill: white;
+}
+
+.g-course {
+  fill: none;
+  stroke: #333;
+}
+
+.g-course-crossed {
+  stroke-dasharray: 2,3;
+}
+
+.g-course-points {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.g-course-labels {
+  font: bold 11px sans-serif;
+  text-anchor: middle;
+  text-transform: capitalize;
+}
+
+.g-shoreline {
+  fill: none;
+  stroke: none;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+}
+
+.g-trail,
+.g-track {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.g-track {
+  stroke-opacity: .2;
+}
+
+.g-trail {
+  stroke-width: 1.5px;
+}
+
+.g-boat circle {
+  stroke: #000;
+  stroke-opacity: .1;
+  stroke-width: 3px;
+}
+
+.g-trail-usa,
+.g-track-usa {
+  stroke: #B43030;
+}
+
+.g-trail-nzl,
+.g-track-nzl {
+  stroke: #405695;
+}
+
+.g-boat-usa {
+  fill: #B43030;
+}
+
+.g-boat-nzl {
+  fill: #405695;
+}
+
+.g-axis .tick-special.tick-usa {
+  fill: #B43030;
+}
+
+.g-axis .tick-special.tick-nzl {
+  fill: #405695;
+}
+
+.g-boat text {
+  text-anchor: middle;
+  fill: white;
+  stroke: none;
+  font-family: Arial;
+  font-size: 9px;
+}
+
+.g-axis {
+  font: 10px sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  fill: #777;
+}
+
+.g-axis .domain {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 8px;
+  stroke-linecap: round;
+}
+
+.g-axis .tick line {
+  stroke: #aaa;
+  shape-rendering: crispEdges;
+}
+
+.g-axis .tick-special {
+  font-weight: bold;
+  fill: black;
+}
+
+.g-axis .g-halo {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.g-slider .background {
+  cursor: ew-resize !important;
+}
+
+.g-slider .g-handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.0px;
+  pointer-events: none;
+}
+
+.g-city {
+  font-family: Arial;
+  font-size: 11px;
+  fill: #aaa;
+}
+
+.g-island {
+  font-family: Arial;
+  font-size: 10px;
+  fill: #000;
+  fill-opacity: 0.3;
+}
+
+.g-wind text {
+  text-anchor: middle;
+  fill: #999;
+}
+
+.g-compass circle{
+  fill: white;
+  fill-opacity: 0.5;
+  stroke: none;
+  stroke-opacity: 0.2;
+}
+
+.g-compass line {
+  stroke: grey;
+}
