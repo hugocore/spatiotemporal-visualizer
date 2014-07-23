@@ -31,6 +31,15 @@ function entity() {
 // Helpers
 //
 
+var weekday = new Array(7);
+weekday[0]=  "Sun.";
+weekday[1] = "Mon.";
+weekday[2] = "Tue.";
+weekday[3] = "Wed.";
+weekday[4] = "Thu.";
+weekday[5] = "Fri.";
+weekday[6] = "Sat.";
+
 function formatDate(date) {
 	return d3.time.format("%Y-%m-%d %H:%M:%S").parse(date);
 }
@@ -47,10 +56,10 @@ function print_filter(filter){
 // Setup
 //
 
-minDate = formatDate("2008-10-28 00:00:00");
+minDate = formatDate("2008-10-19 00:00:00");
 maxDate = formatDate("2008-10-28 23:59:59");
 startDate = formatDate("2008-10-28 07:00:00");
-endDate = formatDate("2008-10-28 13:00:46");
+endDate = formatDate("2008-10-28 18:00:00");
 initialPosition = [39.94403, 116.407526]; // beijing
 
 //
@@ -68,7 +77,7 @@ $("#slider").dateRangeSlider({
 	    minutes: 5
 	},
 	formatter: function(val) {
-		var format = d3.time.format("%Y-%m-%d %H:%M");
+		var format = d3.time.format("%a. %H:%M");
 		return format(val);
 	},
 	scales: [{
@@ -76,34 +85,30 @@ $("#slider").dateRangeSlider({
 	  end: function(value) {return value; },
 	  next: function(value) {
 	    var next = new Date(value);
-	    return new Date(next.setMinutes(value.getMinutes() + 60));
+	    return new Date(next.setDate(value.getDate() + 1));
 	  },
 	  label: function(value){
-	  	console.log(value);
 	  	var next = new Date(value);
-	    return next.getHours()+1;
+	    return weekday[next.getDay()];
+	  },
+	  format: function(tickContainer, tickStart, tickEnd){
+	    tickContainer.addClass("myCustomClass");
+	  }
+	}, {
+	  first: function(value) { return value; },
+	  end: function(value) {return value; },
+	  next: function(value) {
+	    var next = new Date(value);
+	    return new Date(next.setHours(value.getHours() + 6));
+	  },
+	  label: function(value){
+	    return null;
 	  },
 	  format: function(tickContainer, tickStart, tickEnd){
 	    tickContainer.addClass("myCustomClass");
 	  }
 	}]
 });
-
-/*,
-scales: [{
-  first: function(value){ return value; },
-  end: function(value) {return value; },
-  next: function(value){
-    var next = new Date(value);
-    return new Date(next.setMonth(value.getMonth() + 1));
-  },
-  label: function(value){
-    return months[value.getMonth()];
-  },
-  format: function(tickContainer, tickStart, tickEnd){
-    tickContainer.addClass("myCustomClass");
-  }
-}]*/
 
 d3.csv("csv/182-29out-5min.csv", function(collection) {
 
@@ -163,13 +168,16 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 			// Add point to entity
 			entities[d.user].push(d.coordinates);
 		});
+		$("#countUsers").html(Object.keys(entities).length);
+		var timeDiff = range[1]-range[0];
+		$("#countTime").html(Math.floor(timeDiff / 1000 / 60 / 60));
+		$('.inner').stop().fadeTo('slow', 1).stop().delay(500).fadeTo('slow', 0.4);
 	}
 
 	function getDistinctUsers() {
 		usersGroup.top(Infinity).forEach(function (d) {
 			users.push({user: d.key});
 		});
-		$("#active").html(users.length);
 	}
 
 	// Count total number of points
