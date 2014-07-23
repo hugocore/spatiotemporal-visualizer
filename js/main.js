@@ -120,7 +120,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 			$('.inner').stop().fadeTo('slow', 1);
 		},
 		function(){
-			$('.inner').stop().delay(500).fadeTo('slow', 0.4);
+			$('.inner').stop().delay(500).stop().fadeTo('slow', 0.4);
 		}
 	);
 
@@ -189,10 +189,16 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 	//
 
 	var map = L.map('map').setView(initialPosition, 11),
-		maplink = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-						attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
-						maxZoom: 18,
-					}).addTo(map);
+		maplink = L.tileLayer('http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/maptile/{mapID}/normal.day.grey/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}', {
+					attribution: 'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
+					subdomains: '1234',
+					mapID: 'newest',
+					app_id: 'DemoAppId01082013GAL',
+					app_code: 'AJKnXv84fjrb0KIHawS0Tg',
+					base: 'base',
+					minZoom: 0,
+					maxZoom: 18
+				}).addTo(map);
 
 	// Initialize the SVG layer */
 	map._initPathRoot();
