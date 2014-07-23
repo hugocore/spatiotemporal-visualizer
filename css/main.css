@@ -35,18 +35,27 @@ html, body, .container, #map {
   left: 0px;
 }
 
+#slider {
+  width: 100%;
+}
+
+.description {
+  display: none;
+}
+
 /*
  * Globals
  */
 
 /* Links */
 a {
-  color: red;
+  color: purple;
+  padding: 5px;
 }
 a:focus,
 a:hover {
   color: white;
-  background-color: red;
+  background-color: purple;
   padding: 5px;
   text-decoration: none;
 }
@@ -155,6 +164,7 @@ a:hover {
 
 .mastfoot {
   color: #333; /* IE8 proofing */
+  text-align: center;
 }
 
 

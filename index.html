@@ -6,7 +6,7 @@
 
         <!-- Styles -->
         <link href="css/leaflet.css" rel="stylesheet" type="text/css" />
-        <link href="css/jquery.slider.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery.slider.ithing.css" rel="stylesheet" type="text/css" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="css/main.css" rel="stylesheet" type="text/css" />
 
@@ -27,6 +27,7 @@
         <script src="js/leaflet.min.js"  type="text/javascript"></script>
         <script src="js/moment.min.js"  type="text/javascript"></script>
         <script src="js/moment.timezone.min.js"  type="text/javascript"></script>
+        <script src="js/bootstrap.min.js"></script>
 
         <!-- Main code -->
         <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
@@ -58,18 +59,25 @@
                     <h1 class="masthead-brand">Spatio temporal visualizer</h1>
                 </div>
                 <div class="inner">
-                    <h4>Beijing, <span id="active">182</span> users</h4>
+                    <div class="loading">
+                        <h4>Loading data, please wait ...</h4>
+                    </div>
+                    <div class="description">
+                        <h4>Following <span id="active">...</span> users in Beijing over the period of one day. <a href="#" data-toggle="modal" data-target="#myModal">More info.</a></h4>
+
+
+                    </div>
                 </div>
               </div>
 
               <div class="inner cover">
-                aefaefaef
-                <div id="slider"></div>
+
               </div>
 
               <div class="mastfoot">
+                <div id="slider"></div>
                 <div class="inner">
-                  <p>Spatio temporal data visualizer using D3.js, Leaflet.js and Crossfilter by <a href="hhttps://github.com/hugocore/spatiotemporal-visualizer">@hugocore</a></p>
+                  <p>Spatio temporal data visualizer using D3.js, Leaflet.js and Crossfilter by <a href="https://github.com/hugocore/spatiotemporal-visualizer">@hugocore</a></p>
                 </div>
               </div>
 
@@ -79,6 +87,24 @@
 
         </div>
 
+    </div>
+
+     <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">GeoLife Trajectory Dataset</h4>
+          </div>
+          <div class="modal-body" style="text-align: justify">
+            <p>This dataset of GPS trajectories was collected in the Geolife project from Microsoft Research Asia, by 182 users in a period of over three years (i.e., from April 2007 to August 2012). A GPS trajectory in this dataset is represented by a sequence of time-stamped points, each of which contains the information of latitude, longitude and altitude. The complete dataset contains 17,621 trajectories with a total distance of about 1.2 million kilometers and a total duration of 48,000+ hours. Approximately 91 percent of the trajectories are logged in a dense representation, e.g. every 1~5 seconds or every 5~10 meters per point. The dataset recoded a broad range of users’ outdoor movements, including not only life routines like go home and go to work but also some entertainments and sports activities, such as shopping, sightseeing, dining, hiking, and cycling. There is portion of the dataset where each trajectory has a set of transportation mode labels, such as by driving, taking a bus, riding a bike and walking.</p>
+            <p>More information at <a href="http://research.microsoft.com/apps/pubs/?id=141896" target="_blank">http://research.microsoft.com/apps/pubs/?id=141896</a></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
 
     </body>

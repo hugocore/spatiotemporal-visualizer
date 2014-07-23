@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 //
 // Commons
 //
@@ -61,15 +63,30 @@ $("#slider").dateRangeSlider({
 	bounds: {min: minDate, max: maxDate},
 	defaultValues: {min: startDate, max: endDate},
 	wheelMode: "scroll",
-	wheelSpeed: 1,
+	wheelSpeed: 10,
 	step: {
-	    minutes: 1
+	    minutes: 5
 	},
-	formatter:function(val){
+	formatter: function(val) {
 		var format = d3.time.format("%Y-%m-%d %H:%M");
 		return format(val);
-		alert("STUF");
-	}
+	},
+	scales: [{
+	  first: function(value) { return value; },
+	  end: function(value) {return value; },
+	  next: function(value) {
+	    var next = new Date(value);
+	    return new Date(next.setMinutes(value.getMinutes() + 60));
+	  },
+	  label: function(value){
+	  	console.log(value);
+	  	var next = new Date(value);
+	    return next.getHours()+1;
+	  },
+	  format: function(tickContainer, tickStart, tickEnd){
+	    tickContainer.addClass("myCustomClass");
+	  }
+	}]
 });
 
 /*,
@@ -88,7 +105,19 @@ scales: [{
   }
 }]*/
 
-d3.csv("csv/10-all-5min.csv", function(collection) {
+d3.csv("csv/182-29out-5min.csv", function(collection) {
+
+	$('.inner').delay(3000).fadeTo('slow', 0.4);
+
+	// when hover over text
+	$('.inner').hover(
+		function(){
+			$('.inner').stop().fadeTo('slow', 1);
+		},
+		function(){
+			$('.inner').stop().delay(500).fadeTo('slow', 0.4);
+		}
+	);
 
 	spatialPoints = [];
 
@@ -140,6 +169,7 @@ d3.csv("csv/10-all-5min.csv", function(collection) {
 		usersGroup.top(Infinity).forEach(function (d) {
 			users.push({user: d.key});
 		});
+		$("#active").html(users.length);
 	}
 
 	// Count total number of points
@@ -186,7 +216,7 @@ d3.csv("csv/10-all-5min.csv", function(collection) {
 		.enter()
 		.append("circle")
 		.attr("r", 5)
-		.attr("fill", "purple")
+		.attr("fill", "#CC0099")
 		.attr("fill-opacity", 1)
 		.attr("stroke", "black")
 		.attr("stroke-width", 2)
@@ -245,5 +275,10 @@ d3.csv("csv/10-all-5min.csv", function(collection) {
 
 	map.on("viewreset", updateOnResize);
 	updateOnResize();
+
+	$(".loading").hide();
+	$(".description").show();
+
+});
 
 });
