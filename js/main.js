@@ -52,6 +52,15 @@ function print_filter(filter){
 	console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 //
 // Setup
 //
@@ -176,7 +185,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 
 	function getDistinctUsers() {
 		usersGroup.top(Infinity).forEach(function (d) {
-			users.push({user: d.key});
+			users.push({user: d.key, color: getRandomColor()});
 		});
 	}
 
@@ -230,7 +239,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 		.enter()
 		.append("circle")
 		.attr("r", 5)
-		.attr("fill", "#CC0099")
+		.attr("fill", function (d) { return d.color; })
 		.attr("fill-opacity", 1)
 		.attr("stroke", "black")
 		.attr("stroke-width", 2)
@@ -244,7 +253,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 		.enter()
 		.append("path")
 		.attr("fill", "none")
-        .attr("stroke", "#842DCE")
+        .attr("stroke", function (d) { return d.color; })
         .attr("stroke-width", 3)
         ;
 
