@@ -89,22 +89,6 @@ $("#slider").dateRangeSlider({
 	}]
 });
 
-/*,
-scales: [{
-  first: function(value){ return value; },
-  end: function(value) {return value; },
-  next: function(value){
-    var next = new Date(value);
-    return new Date(next.setMonth(value.getMonth() + 1));
-  },
-  label: function(value){
-    return months[value.getMonth()];
-  },
-  format: function(tickContainer, tickStart, tickEnd){
-    tickContainer.addClass("myCustomClass");
-  }
-}]*/
-
 d3.csv("csv/182-29out-5min.csv", function(collection) {
 
 	$('.inner').delay(3000).fadeTo('slow', 0.4);
