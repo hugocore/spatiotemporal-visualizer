@@ -121,7 +121,9 @@ $("#slider").dateRangeSlider({
 
 d3.csv("csv/182-29out-5min.csv", function(collection) {
 
-	$('.inner').delay(3000).fadeTo('slow', 0.4);
+	setTimeout(function () {
+		$('.inner').fadeTo('slow', 0.4);
+	}, 3000);
 
 	// when hover over text
 	$('.inner').hover(
@@ -129,7 +131,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 			$('.inner').stop().fadeTo('slow', 1);
 		},
 		function(){
-			$('.inner').stop().delay(500).stop().fadeTo('slow', 0.4);
+			$('.inner').stop().fadeTo('slow', 0.4);
 		}
 	);
 
@@ -180,7 +182,10 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 		$("#countUsers").html(Object.keys(entities).length);
 		var timeDiff = range[1]-range[0];
 		$("#countTime").html(Math.floor(timeDiff / 1000 / 60 / 60));
-		$('.inner').stop().fadeTo('slow', 1).stop().delay(500).fadeTo('slow', 0.4);
+		$('.inner').stop().fadeTo('slow', 1);
+		setTimeout(function() {
+			$('.inner').fadeTo('slow', 0.4);
+		}, 1000);
 	}
 
 	function getDistinctUsers() {
