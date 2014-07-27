@@ -65,10 +65,10 @@ function getRandomColor() {
 // Setup
 //
 
-minDate = formatDate("2008-10-19 00:00:00");
+minDate = formatDate("2008-10-01 00:00:00");
 maxDate = formatDate("2008-10-28 23:59:59");
-startDate = formatDate("2008-10-28 07:00:00");
-endDate = formatDate("2008-10-28 18:00:00");
+startDate = formatDate("2008-10-16 21:15:00");
+endDate = formatDate("2008-10-23 21:15:00");
 initialPosition = [39.94403, 116.407526]; // beijing
 
 //
@@ -86,7 +86,7 @@ $("#slider").dateRangeSlider({
 	    minutes: 5
 	},
 	formatter: function(val) {
-		var format = d3.time.format("%a. %H:%M");
+		var format = d3.time.format("%d %a. %H:%M");
 		return format(val);
 	},
 	scales: [{
@@ -98,7 +98,7 @@ $("#slider").dateRangeSlider({
 	  },
 	  label: function(value){
 	  	var next = new Date(value);
-	    return weekday[next.getDay()];
+	    return next.getDate();
 	  },
 	  format: function(tickContainer, tickStart, tickEnd){
 	    tickContainer.addClass("myCustomClass");
@@ -121,7 +121,7 @@ $("#slider").dateRangeSlider({
 
 d3.csv("csv/182-29out-5min.csv", function(collection) {
 
-	setTimeout(function () {
+	/*setTimeout(function () {
 		$('.inner').fadeTo('slow', 0.4);
 	}, 3000);
 
@@ -133,7 +133,7 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 		function(){
 			$('.inner').stop().fadeTo('slow', 0.4);
 		}
-	);
+	);*/
 
 	spatialPoints = [];
 
@@ -183,9 +183,9 @@ d3.csv("csv/182-29out-5min.csv", function(collection) {
 		var timeDiff = range[1]-range[0];
 		$("#countTime").html(Math.floor(timeDiff / 1000 / 60 / 60));
 		$('.inner').stop().fadeTo('slow', 1);
-		setTimeout(function() {
+		/*setTimeout(function() {
 			$('.inner').fadeTo('slow', 0.4);
-		}, 1000);
+		}, 1000);*/
 	}
 
 	function getDistinctUsers() {
